@@ -2,7 +2,7 @@
 # netskope-scimscripts
 Scripts pertaining to working with the Netskope SCIM API's
 =======
-Couple scripts to quickly query the Netskope SCIM API and return information
+Collection of scripts to quickly query the Netskope SCIM API and return information
 about users and groups defined on the back end.
 
 scimgroups - Lists or Deletes Groups
@@ -24,7 +24,24 @@ python ./scimgroups list 948b4cc3-6368-4a3c-8669-e73c22c3c4c5
 python ./scimusers list all
 python ./scimusers list ef8fd947-32e7-474c-b502-02c012a63bff
 
-The API Key needed for the calls is encrypted in 2 files - not meant to be suer secure, but at least it's not in clear text.
+
+apiquery.py
+
+This one takes a few more parameters
+
+1 = tenant name (Required - without .goskope.com)
+2 = API Endpoint (Required without api/v2/ - will be prepended by default)
+3 = What I call Options, so basically anything that needs to be sent with the api call EXCEPT for the actualy query if supported)
+4 = --query (optional - Query that you want to use if supported)
+5 = --view (Optional - View the json blob on the screen)
+6 = --export (Optional - Will export the results to a file named "apiendpoint-epochtime.txt")
+
+Example:
+
+python ./apiquery.py tenantname events/data/application "starttime=1727803077&endtime=1727809677&limit=10000&skip=0" --query "activity eq 'Upload'" --view --export
+
+
+The API Key needed for the calls is encoded in 2 files - not meant to be suer secure, but at least it's not in clear text.
 Obviously it can be reverse engineered by reading the script - so modify accordingly for your environment.
 
 Place your api key in a file called api.txt, then run the script encrypt_api in order to encrypt the api key in 2 files 
