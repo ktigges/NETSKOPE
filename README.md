@@ -1,6 +1,5 @@
 <<<<<<< HEAD
-# netskope-scimscripts
-Scripts pertaining to working with the Netskope SCIM API's
+Netskope API Scripts
 =======
 Collection of scripts to quickly query the Netskope SCIM API and return information
 about users and groups defined on the back end.
